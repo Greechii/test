@@ -1,0 +1,49 @@
+
+
+MAKEFILE = Makefile
+
+first: default
+
+
+### compile
+modules_default:
+	@echo ""
+	@cd pkg && $(MAKE) -f $(MAKEFILE)
+main_default:
+	@echo ""
+	@cd src && $(MAKE) -f $(MAKEFILE)
+	@echo ""
+	@echo "##############################################################"
+	@echo ""
+	@echo "Compile is done!!"
+	@echo ""
+	@echo "##############################################################"
+
+### install
+modules_install:
+	@echo ""
+	@cd pkg && $(MAKE) -f $(MAKEFILE) install
+main_install:
+	@echo ""
+	@cd src && $(MAKE) -f $(MAKEFILE) install
+
+### clean
+modules_clean:
+	@echo ""
+	@cd pkg && $(MAKE) -f $(MAKEFILE) clean
+main_clean:
+	@echo ""
+	@cd src && $(MAKE) -f $(MAKEFILE) clean
+
+### uninstall
+modules_uninstall:
+	@echo ""
+	@cd pkg && $(MAKE) -f $(MAKEFILE) uninstall
+main_uninstall:
+	@echo ""
+	@cd src && $(MAKE) -f $(MAKEFILE) uninstall
+
+default: modules_default main_default
+install: modules_install main_install
+clean: modules_clean main_clean
+uninstall: modules_uninstall main_uninstall
